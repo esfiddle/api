@@ -1,0 +1,421 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is the ESFiddle API, it has a mix of private and public methods. Methods are all secured with JWT authentication. This API is used as part of the main ESFiddle website. Third-party applications are welcome to intergrate with this API.",
+    "version": "1.0.0",
+    "title": "ESFiddle",
+    "contact": {
+      "email": "code@esfidde.net"
+    },
+    "license": {
+      "name": "MIT"
+    }
+  },
+  "host": "api.esfiddle.net",
+  "basePath": "/v1",
+  "schemes": [
+    "https"
+  ],
+  "parameters": {
+    "fiddleId": {
+      "name": "fiddleId",
+      "in": "path",
+      "description": "Fiddle ID",
+      "type": "string",
+      "required": true
+    }
+  },
+  "paths": {
+    "/users": {
+      "post": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Add a new user",
+        "description": "",
+        "operationId": "addUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User Object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Success"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Update an existing user",
+        "description": "",
+        "operationId": "updateUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that needs to be added to the store",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "users"
+        ],
+        "summary": "Update an existing users property",
+        "description": "",
+        "operationId": "patchUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object containing the parameter you want to update",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "405": {
+            "description": "Validation exception"
+          }
+        }
+      }
+    },
+    "/fiddles": {
+      "post": {
+        "tags": [
+          "fiddles"
+        ],
+        "summary": "Create fiddle",
+        "description": "Create a fiddle for the user in the JWT. Returns an object of the created fiddle along with a unique url and url code",
+        "operationId": "createFiddle",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Fiddle object to create",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Fiddle"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/fiddles/${fiddleId}": {
+      "put": {
+        "parameters": [
+          {
+            "$ref": "#/parameters/fiddleId"
+          }
+        ],
+        "tags": [
+          "fiddles"
+        ],
+        "summary": "Update a fiddle",
+        "description": "Update the fiddle based on the ID passed to the route. Updates only if you are authenticated.",
+        "operationId": "updateFiddle",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "default": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/fiddles/${fiddleId}/star": {
+      "post": {
+        "parameters": [
+          {
+            "$ref": "#/parameters/fiddleId"
+          }
+        ],
+        "tags": [
+          "fiddles"
+        ],
+        "summary": "Star a fiddle",
+        "description": "Star a fiddle based on the ID passed to the route. If the fiddle is private then we disallow this process and throw an error.",
+        "operationId": "starFiddle",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "default": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/fiddles/${fiddleId}/fork": {
+      "post": {
+        "parameters": [
+          {
+            "$ref": "#/parameters/fiddleId"
+          }
+        ],
+        "tags": [
+          "fiddles"
+        ],
+        "summary": "Fork a fiddle",
+        "description": "Fork a fiddle based on the ID passed to the route. If the fiddle is private then we disallow this process and throw an error. Forking a fiddle creates a copy of it with a new URL, the copy is returned as an object",
+        "operationId": "forkFiddle",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "default": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/fiddles/${fiddleId}/download": {
+      "post": {
+        "parameters": [
+          {
+            "$ref": "#/parameters/fiddleId"
+          }
+        ],
+        "tags": [
+          "fiddles"
+        ],
+        "summary": "Download a fiddle",
+        "description": "Download a fiddle based on the ID passed to the route. If the fiddle is private then we disallow this process and throw an error. It zips the fiddle and returns the file as a response",
+        "operationId": "downloadFiddle",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "default": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/fiddles/${fiddleId}/code-blocks": {
+      "post": {
+        "parameters": [
+          {
+            "$ref": "#/parameters/fiddleId"
+          }
+        ],
+        "tags": [
+          "fiddles"
+        ],
+        "summary": "Create a code block image for fiddle",
+        "operationId": "codeblocksFiddle",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "default": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/fiddles/recent": {
+      "get": {
+        "tags": [
+          "fiddles"
+        ],
+        "summary": "Get the most recent fiddles, by default it returns 10 records",
+        "operationId": "getRecentFiddles",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Parameters to dictate response you would like",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GetFiddle"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Array of objects containing the fiddles"
+          }
+        }
+      }
+    },
+    "/fiddles/popular": {
+      "get": {
+        "tags": [
+          "fiddles"
+        ],
+        "summary": "Get the most popular fiddles, by default it returns 10 records",
+        "operationId": "getPopularFiddles",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Parameters to dictate response you would like",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/GetFiddle"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "Array of objects containing the fiddles"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "The MongoDB ObjectID key"
+        },
+        "username": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "userStatus": {
+          "type": "integer",
+          "format": "int32",
+          "description": "User Status"
+        }
+      }
+    },
+    "Fiddle": {
+      "type": "object",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "The id of the record"
+        },
+        "fiddle": {
+          "type": "string",
+          "description": "The unique ID that is used in the fiddles URL"
+        },
+        "name": {
+          "type": "string",
+          "example": "Fiddle Name"
+        },
+        "description": {
+          "type": "string",
+          "example": "A description about the fiddle"
+        },
+        "private": {
+          "type": "integer",
+          "description": "Describes whether the fiddle is private or not. Private means, creator only.",
+          "example": "1"
+        },
+        "stars": {
+          "type": "integer",
+          "description": "Count of how many stars a fiddle has"
+        },
+        "value": {
+          "type": "string",
+          "description": "The contents of the fiddle - the code!"
+        }
+      }
+    },
+    "GetFiddle": {
+      "type": "object",
+      "properties": {
+        "startDate": {
+          "type": "string",
+          "description": "The start date you want the records FROM"
+        },
+        "endDate": {
+          "type": "string",
+          "description": "The start date you want the records TO"
+        },
+        "limit": {
+          "type": "integer",
+          "description": "How many records you want"
+        }
+      }
+    }
+  }
+}
