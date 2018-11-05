@@ -1,0 +1,4 @@
+{
+  "verbose": true,
+  "setupTestFrameworkScriptFile": "<rootDir>src/setupTests.js"
+}

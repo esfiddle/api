@@ -38,6 +38,7 @@
     "gulp-clean": "^0.4.0",
     "gulp-typescript": "^4.0.2",
     "gulp-yaml": "^2.0.1",
+    "jest": "^23.6.0",
     "mocha": "^5.2.0",
     "mocha-typescript": "^1.1.4",
     "typescript": "^2.3.4"
@@ -46,7 +47,8 @@
     "start": "./node_modules/.bin/nodemon dist/index.js",
     "build": "./node_modules/.bin/gulp build",
     "test": "./node_modules/.bin/mocha -t 30000 dist/tests/**/*.spec.js",
-    "postinstall": "npm run build"
+    "postinstall": "npm run build",
+    "test-jest": "jest --config ./tests/jest-config.json"
   },
   "repository": {
     "type": "git",
