@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
 
-let FiddleSchema = new mongoose.Schema(
+const FiddleSchema = new mongoose.Schema(
     {
       _id:  String,
       fiddle: String,
       name: String,
       description: String,
       creator: String,
-      private: Integer,
-      stars: Integer,
+      private: Number,
+      stars: Number,
       value: String,
     }
 );

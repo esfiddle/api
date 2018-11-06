@@ -1,4 +1,5 @@
 {
   "verbose": true,
-  "setupTestFrameworkScriptFile": "./tests/setup.js"
+  "moduleFileExtensions": [ "ts", "tsx", "js", "jsx" ],
+  "testMatch": [  "**/tests/(*.)+(spec|test).(ts|js)?(x)"]
 }

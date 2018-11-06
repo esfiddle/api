@@ -1,5 +1,4 @@
-const Fiddle = require('./../models/Fiddle');
-const User = require('./../models/User');
+//const Fiddle = require('./../models/Fiddle.ts');
 
 module.exports = {
   createFiddle: (req, res, next) => {
