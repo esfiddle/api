@@ -43,7 +43,7 @@ FiddleSchema.methods.download = function() {
 
 }
 
-FiddleSchema.methods.create_code_block = function() {
+FiddleSchema.methods.createCodeBlock = function() {
   // create_code_block in here
 
   return this.save();
