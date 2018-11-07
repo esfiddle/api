@@ -5,3 +5,4 @@ dist
 .env
 application.log
 npm-debug.log
+yarn-error.log
