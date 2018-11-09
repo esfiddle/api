@@ -1,8 +1,9 @@
-const express = require('express');
-const app = express();
+import * as express from 'express';
+const app: express.Application = express();
 const PORT = process.env.PORT || 8080;
+import router from "./server/routes/fiddle";
 
-app.use('/fiddles', require('./server/routes/fiddle.ts'));
+app.use('/fiddles', router);
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
