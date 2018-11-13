@@ -54,15 +54,14 @@
     "typescript": "^2.3.4"
   },
   "scripts": {
-    "start": "./node_modules/.bin/nodemon dist/index.js",
-    "lint-server": "tslint -c tslint.json 'server/**/*.{ts,tsx}'",
-    "lint-tests": "tslint -c tslint.json 'tests/**/*.{ts,tsx}'",
-    "pretest": "npm run lint-server",
-    "build": "./node_modules/.bin/gulp build",
-    "test-mocha": "./node_modules/.bin/mocha -t 30000 dist/tests/**/*.spec.js",
+    "start": "nodemon dist/index.js",
+    "lint": "tslint -c tslint.json '*/**/*.{ts,tsx}'",
+    "pretest": "npm run lint",
+    "build": "npm run lint && npm test && npm compile",
     "postinstall": "npm run build",
-    "test": "jest --config ./jest-config.json",
-    "compile": "./node_modules/typescript/bin/tsc --watch"
+    "test": "jest --config ./jest-config.json && mocha -t 30000 dist/tests/**/*.spec.js",
+    "compile": "tsc",
+    "watch": "tsc --watch"
   },
   "repository": {
     "type": "git",

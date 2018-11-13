@@ -2,7 +2,7 @@ import * as express from "express";
 const app: express.Application = express();
 
 import request = require("supertest");
-import router from "../server/routes/fiddle";
+import router from "../server/routes/fiddleRoutes";
 
 app.use("/fiddles", router);
 
