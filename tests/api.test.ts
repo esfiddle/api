@@ -1,10 +1,10 @@
 import * as express from "express";
+import request = require("supertest");
+import { FiddleRouter } from "../server/routes/fiddleRoutes";
+
 const app: express.Application = express();
 
-import request = require("supertest");
-import router from "../server/routes/fiddleRoutes";
-
-app.use("/fiddles", router);
+app.use("/fiddles", FiddleRouter);
 
 describe("POST /fiddles/", () => {
     test("It should gets 200 success return code", () => {

@@ -1,7 +1,8 @@
-import * as express from "express";
-const router: express.Router = express.Router();
-
+import { Router } from "express";
 import { FiddleController } from "../controllers/fiddleController";
+
+const router: Router = Router();
+
 const fiddleController: FiddleController = new FiddleController();
 
 router.post("/", fiddleController.createFiddle);
@@ -13,4 +14,4 @@ router.post("/:fiddleid/code-blocks", fiddleController.createCodeBlock);
 router.get("/recent", fiddleController.recentFiddles);
 router.get("/popular", fiddleController.popularFiddles);
 
-export default router;
+export const FiddleRouter: Router = router;
