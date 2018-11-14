@@ -391,8 +391,12 @@
           "example": "1"
         },
         "stars": {
-          "type": "integer",
-          "description": "Count of how many stars a fiddle has"
+          "type": "array",
+          "items": {
+            "type": "object"
+            },
+          "description": "Stores which user starred the fiddle and the date",
+          "example": "[{ _id: 1234, starredOn: 1515134542 }]"
         },
         "value": {
           "type": "string",
