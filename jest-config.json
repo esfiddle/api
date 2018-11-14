@@ -1,0 +1,8 @@
+{
+  "verbose": true,
+  "moduleFileExtensions": [ "ts", "tsx", "js", "jsx" ],
+  "testMatch": [  "**/tests/(*.)+(spec|test).(ts|js)?(x)"],
+  "transform": {
+      "\\.(ts|tsx)$": "ts-jest"
+    }
+}
