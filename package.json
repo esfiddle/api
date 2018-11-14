@@ -54,14 +54,13 @@
     "typescript": "^2.3.4"
   },
   "scripts": {
-    "start": "nodemon dist/index.js",
+    "start": "nodemon dist/server.js",
     "lint": "tslint -c tslint.json '*/**/*.{ts,tsx}'",
     "pretest": "npm run lint",
-    "build": "npm run lint && npm test && npm compile",
     "postinstall": "npm run build",
-    "test": "jest --config ./jest-config.json && mocha -t 30000 tests/**/*.spec.js",
-    "compile": "tsc",
-    "watch": "tsc --watch"
+    "test": "npm run lint && jest --config ./jest-config.json && mocha dist/tests/**/*.spec.js",
+    "build": "tsc",
+    "watch:dev": "tsc --watch"
   },
   "repository": {
     "type": "git",

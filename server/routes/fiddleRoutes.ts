@@ -1,17 +1,26 @@
-import { Router } from "express";
-import { FiddleController } from "../controllers/fiddleController";
+import * as express from "express";
+import { fiddleController } from "../controllers/fiddleController";
 
-const router: Router = Router();
+class FiddleRoutes {
+  public router: express.Router = express.Router();
 
-const fiddleController: FiddleController = new FiddleController();
+  constructor() {
+    this.config();
+  }
 
-router.post("/", fiddleController.createFiddle);
-router.put("/:fiddleid", fiddleController.updateFiddle);
-router.post("/:fiddleid/star", fiddleController.starFiddle);
-router.post("/:fiddleid/fork", fiddleController.forkFiddle);
-router.post("/:fiddleid/download", fiddleController.downloadFiddle);
-router.post("/:fiddleid/code-blocks", fiddleController.createCodeBlock);
-router.get("/recent", fiddleController.recentFiddles);
-router.get("/popular", fiddleController.popularFiddles);
+  private config(): void {
 
-export const FiddleRouter: Router = router;
+    // const fiddleController: FiddleController = new FiddleController();
+
+    this.router.post("/", fiddleController.createFiddle);
+    this.router.put("/:fiddleid", fiddleController.updateFiddle);
+    this.router.post("/:fiddleid/star", fiddleController.starFiddle);
+    this.router.post("/:fiddleid/fork", fiddleController.forkFiddle);
+    this.router.post("/:fiddleid/download", fiddleController.downloadFiddle);
+    this.router.post("/:fiddleid/code-blocks", fiddleController.createCodeBlock);
+    this.router.get("/recent", fiddleController.recentFiddles);
+    this.router.get("/popular", fiddleController.popularFiddles);
+  }
+}
+
+export const fiddleRoutes = new FiddleRoutes().router;
