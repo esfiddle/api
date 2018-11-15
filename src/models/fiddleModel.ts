@@ -29,7 +29,7 @@ export const FiddleSchema = new Schema({
       },
       stars: [{
         _id: String,
-        date: Date
+        date: Date,
       }],
       value: {
         required: true,

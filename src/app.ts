@@ -1,5 +1,5 @@
 import * as express from "express";
-import { fiddleRoutes } from "./server/routes/fiddleRoutes";
+import { fiddleRoutes } from "./routes/fiddleRoutes";
 
 class App {
   public app: express.Application;
@@ -9,7 +9,7 @@ class App {
   }
 
   private config(): void {
-    this.app.use('/fiddles', fiddleRoutes);
+    this.app.use("/fiddles", fiddleRoutes);
   }
 }
 

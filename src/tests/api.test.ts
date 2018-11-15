@@ -1,5 +1,6 @@
+import "jest";
 import app from "../app";
-import { fiddleRoutes } from "../server/routes/fiddleRoutes";
+import { fiddleRoutes } from "../routes/fiddleRoutes";
 
 import request = require("supertest");
 

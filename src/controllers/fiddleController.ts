@@ -4,7 +4,7 @@ import { FiddleSchema } from "../models/fiddleModel";
 
 const Fiddle = mongoose.model("Fiddle", FiddleSchema);
 
-class FiddleController {
+export class FiddleController {
 
   public createFiddle = (req: Request, res: Response) => {
     res.json({ function: [ {name: "createFiddle"} ] });
