@@ -1,20 +1,11 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "commonjs",
-    "experimentalDecorators": true,
-    "outDir": "dist"
-  },
-  "include": [
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "api-doc",
-    "config",
-    "environment",
-    "middleware",
-    "routers",
-    "services"
-  ]
+		"module": "commonjs",
+		"sourceMap": true,
+		"declaration": true,
+		"rootDir": "./src",
+		"outDir": "./dist",
+		"strict": true,
+  }
 }

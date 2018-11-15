@@ -1,7 +1,6 @@
-import * as express from "express";
+import app from "./app";
 import { fiddleRoutes } from "./routes/fiddleRoutes";
 
-const app: express.Application = express();
 const PORT = process.env.PORT || 8080;
 
 app.use("/fiddles", fiddleRoutes);

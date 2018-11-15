@@ -385,14 +385,22 @@
           "type": "string",
           "example": "A description about the fiddle"
         },
+        "userId": {
+         "type": "string",
+         "description": "the _id value in the User model of the user that created fiddle. Value is optional as anonymous fiddles can be created."
+       },
         "private": {
           "type": "integer",
           "description": "Describes whether the fiddle is private or not. Private means, creator only.",
           "example": "1"
         },
         "stars": {
-          "type": "integer",
-          "description": "Count of how many stars a fiddle has"
+          "type": "array",
+          "items": {
+            "type": "object"
+            },
+          "description": "Stores which user starred the fiddle and the date",
+          "example": "[{ _id: 1234, starredOn: 1515134542 }]"
         },
         "value": {
           "type": "string",
