@@ -27,7 +27,8 @@ export class FiddleController {
   }
 
   public createCodeBlock = (req: Request, res: Response) => {
-    res.json({ function: [ { name: "createCodeBlock" } ] });
+    const fiddleId = req.params.fiddleId;
+
   }
 
   public recentFiddles = (req: Request, res: Response) => {
@@ -36,7 +37,11 @@ export class FiddleController {
 
   public popularFiddles = (req: Request, res: Response) => {
     res.json({ function: [ { name: "popularFiddles" } ] });
-  }
+	}
+
+	public async getFiddleById(id: string): Promise<FiddleSchema> {
+		return await Fiddle.findById(id);
+	}
 }
 
 export const fiddleController = new FiddleController();
