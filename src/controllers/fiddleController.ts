@@ -15,7 +15,7 @@ export class FiddleController {
   }
 
   public starFiddle = (req: Request, res: Response) => {
-    return res.json({ function: [ { name: "starFiddle" } ] });
+    res.json({ function: [ { name: "starFiddle" } ] });
   }
 
   public forkFiddle = (req: Request, res: Response) => {

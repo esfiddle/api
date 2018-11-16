@@ -9,6 +9,8 @@
     ]
     },
     "jsRules": {},
-    "rules": {},
+    "rules": {
+      "no-console": false
+    },
     "rulesDirectory": []
 }
