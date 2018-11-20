@@ -8,7 +8,7 @@ export class FiddleController {
 
   public createFiddle = (req: Request, res: Response) => {
     res.json({ function: [ {name: "createFiddle"} ] });
-  }
+}
 
   public updateFiddle = (req: Request, res: Response) => {
     res.json({ function: [ { name: "updateFiddle" } ] });
