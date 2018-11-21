@@ -8,14 +8,14 @@ export class FiddleController {
 
   public createFiddle = (req: Request, res: Response) => {
     res.json({ function: [ {name: "createFiddle"} ] });
-  }
+}
 
   public updateFiddle = (req: Request, res: Response) => {
     res.json({ function: [ { name: "updateFiddle" } ] });
   }
 
   public starFiddle = (req: Request, res: Response) => {
-    return res.json({ function: [ { name: "starFiddle" } ] });
+    res.json({ function: [ { name: "starFiddle" } ] });
   }
 
   public forkFiddle = (req: Request, res: Response) => {
