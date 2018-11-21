@@ -8,7 +8,7 @@ class Database {
         console.log(`Database connection to ${url}/${database} successful`);
       })
       .catch((err: any) => {
-        console.error(`Database connection error to ${url}/${database}  ${err}`);
+        throw new Error(`Database connection error to ${url}/${database}  ${err}`);
       });
   }
 }
