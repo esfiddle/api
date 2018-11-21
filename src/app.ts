@@ -2,7 +2,7 @@ import * as express from "express";
 import * as swaggerUi from "swagger-ui-express";
 import { fiddleRoutes } from "./routes/fiddleRoutes";
 
-const swaggerDocument = require("./../swagger.json");
+import * as swaggerDocument from "./../swagger.json";
 
 class App {
   public app: express.Application;
