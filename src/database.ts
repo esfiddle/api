@@ -1,15 +1,16 @@
 import * as mongoose from "mongoose";
 
 class Database {
-  public db_connect(mongoUrl: string | undefined, mongoDb: string | undefined) {
-    mongoose.connect(`'${mongoUrl}/${mongoDb}'`,  { useNewUrlParser: true })
+  public connect(url: string | undefined, database: string | undefined) {
+
+    mongoose.connect(`'${url}/${database}'`, { useNewUrlParser: true })
       .then (() => {
-        console.log(`Database connection to ${mongoUrl}/${mongoDb} successful`);
+        console.log(`Database connection to ${url}/${database} successful`);
       })
       .catch((err: any) => {
-        console.error(`Database connection error to ${mongoUrl}/${mongoDb}  ${err}`);
+        console.error(`Database connection error to ${url}/${database}  ${err}`);
       });
   }
 }
 
-export const dbConnect = new Database().db_connect;
+export const dbConnect = new Database().connect;

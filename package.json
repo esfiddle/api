@@ -45,7 +45,7 @@
     "lint": "tslint -c tslint.json 'src/**/*.ts' --fix",
     "pretest": "npm run build",
     "postinstall": "npm run build",
-    "test": "npm run lint && jest --detectOpenHandles",
+    "test": "npm run lint && jest",
     "build": "tsc",
     "watch:dev": "tsc --watch"
   },
