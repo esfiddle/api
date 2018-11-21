@@ -1,33 +1,44 @@
 # ESFiddle API
 
-The ESFiddle API used by our apps.
+[![Greenkeeper badge](https://badges.greenkeeper.io/esfiddle/api.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/esfiddle/api.svg?branch=master)](https://travis-ci.org/esfiddle/api)
+[![Join the chat at https://gitter.im/esfiddle/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/esfiddle/Lobby)
+[![Pull Requests Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat)](http://makeapullrequest.com)
+[![first-timers-only Friendly](https://img.shields.io/badge/first--timers--only-friendly-blue.svg)](http://www.firsttimersonly.com/)
+
+The ESFiddle API used by the ESFiddle site (https://esfiddle.net)
+This project is a heavy work in progress. Please take a look at the issues, as this is a new project, there is lots of low hanging fruit, so dive in! We are looking for contributors and maintainers.
 
 ## Setup
-Install gulp using
-<code>npm install -g gulp</code> command.
+```sh
+# Clone the repo
+$ git clone git@github.com:esfiddle/api.git esfiddle-api
 
-Use nodemon to have your server restart 
-on file changes. Install nodemon using 
-<code>npm install -g nodemon</code>.
- 
-Then start your server with nodemon index.js.
+# Go into the repo
+$ cd esfiddle-api
 
-    npm i
-    gulp build
-    npm start
+# Install the dependencies and build for the first time
+$ npm i && npm run build
 
-Your app should now be running on localhost:1337.
+# Setup the environment
+# The default values should work fine, but edit them in the .env to make any changes
+$ cp .env.example .env
+
+# Start the project!
+$ npm start
+
+# Test
+$ npm test
+```
 
 ## Configuration
 
-Create **.env** file in root directory 
+Create **.env** file in root directory
 using **.env.example** file.
 
-## Docs
-Go to /docs 
+## Documentation
+You can find our swagger documentation at https://api.esfiddle.net/docs
 
 
-## Run Tests
-
-Run test using
-<code>npm test</code> command.
+## Contributing
+Check our the contribution guide here: https://github.com/esfiddle/site/blob/master/docs/CONTRIBUTE.md
