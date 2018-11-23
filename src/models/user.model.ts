@@ -28,21 +28,23 @@ export const UserSchema = new Schema({
         },
         select: false,
       },
+      avatarUrl: String,
 });
 
-UserSchema.statics.upsertGithubUser = function(token: string, tokenSecret: string, profile: any, cb: any) {
+UserSchema.statics.upsertGithubUser = function(token: string, refreshToken: string, profile: any, cb: any) {
   const that = this;
   return this.findOne({
     "githubProvider.id": profile.id,
   }, function(err: any, user: any) {
     if (!user) {
       const newUser = new that({
-        email: profile.emails[0].value,
+        email: profile.email ? profile.email[0] : null,
         githubProvider: {
           id: profile.id,
           token,
-          tokenSecret,
+          refreshToken,
         },
+        avatarUrl: profile.avatar_url,
       });
 
       newUser.save((error: any, savedUser: any) => {
