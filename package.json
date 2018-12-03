@@ -30,7 +30,7 @@
     "@types/mongodb": "^3.1.14",
     "@types/mongoose": "5.3.2",
     "@types/morgan": "^1.7.32",
-    "@types/node": "10.12.11",
+    "@types/node": "10.12.12",
     "@types/passport": "0.4.7",
     "@types/passport-jwt": "^3.0.1",
     "@types/supertest": "^2.0.6",
