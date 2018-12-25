@@ -31,7 +31,7 @@
     "@types/mongoose": "5.3.5",
     "@types/morgan": "^1.7.32",
     "@types/node": "10.12.11",
-    "@types/passport": "0.4.7",
+    "@types/passport": "1.0.0",
     "@types/passport-jwt": "^3.0.1",
     "@types/supertest": "^2.0.6",
     "@types/swagger-ui-express": "^3.0.0",
