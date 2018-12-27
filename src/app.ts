@@ -1,4 +1,5 @@
 import * as express from "express";
+import * as helmet from "helmet";
 import * as swaggerUi from "swagger-ui-express";
 import { fiddleRoutes } from "./routes/fiddleRoutes";
 
@@ -13,6 +14,7 @@ class App {
   }
 
   private config(): void {
+    this.app.use(helmet());
     this.app.use("/fiddles", fiddleRoutes);
     this.app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
   }
