@@ -10,8 +10,6 @@ class FiddleRoutes {
 
   private config(): void {
 
-    // const fiddleController: FiddleController = new FiddleController();
-
     this.router.post("/", fiddleController.createFiddle);
     this.router.put("/:fiddleid", fiddleController.updateFiddle);
     this.router.post("/:fiddleid/star", fiddleController.starFiddle);

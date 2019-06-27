@@ -6,8 +6,24 @@ const Fiddle = mongoose.model("Fiddle", FiddleSchema);
 
 export class FiddleController {
 
-  public createFiddle = (req: Request, res: Response) => {
-    res.json({ function: [ {name: "createFiddle"} ] });
+  public createFiddle = async (req: Request, res: Response) => {
+    const fiddleDoc: mongoose.Document = new Fiddle(req.body);
+    const error: mongoose.Error.ValidationError = fiddleDoc.validateSync();
+
+    if (error) {
+      res.status(400).json({ error });
+    }
+
+    try {
+      const newFiddle: mongoose.Document = await fiddleDoc.save()
+      res.status(200).json({
+        fiddle: newFiddle,
+        url: 'unique url goes here',
+        urlCode: 'unique urlcode goes here'
+      });
+    } catch (err) {
+      res.status(500).json({ error: err });
+    }
 }
 
   public updateFiddle = (req: Request, res: Response) => {

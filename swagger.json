@@ -153,6 +153,12 @@
           }
         ],
         "responses": {
+          "400": {
+            "description": "Invalid ID supplied"
+          },
+          "500": {
+            "description": "Server error"
+          },
           "default": {
             "description": "Success"
           }
@@ -386,9 +392,9 @@
           "example": "A description about the fiddle"
         },
         "userId": {
-         "type": "string",
-         "description": "the _id value in the User model of the user that created fiddle. Value is optional as anonymous fiddles can be created."
-       },
+          "type": "string",
+          "description": "the _id value in the User model of the user that created fiddle. Value is optional as anonymous fiddles can be created."
+        },
         "private": {
           "type": "integer",
           "description": "Describes whether the fiddle is private or not. Private means, creator only.",
@@ -397,10 +403,9 @@
         "stars": {
           "type": "array",
           "items": {
-            "type": "object"
-            },
-          "description": "Stores which user starred the fiddle and the date",
-          "example": "[{ _id: 1234, starredOn: 1515134542 }]"
+            "$ref": "#/definitions/Star"
+          },
+          "description": "Stores which user starred the fiddle and the date"
         },
         "value": {
           "type": "string",
@@ -422,6 +427,22 @@
         "limit": {
           "type": "integer",
           "description": "How many records you want"
+        }
+      }
+    },
+    "Star": {
+      "type": "object",
+      "required": [
+        "value"
+      ],
+      "properties": {
+        "_id": {
+          "type": "string",
+          "description": "the id of the star"
+        },
+        "starredOn": {
+          "type": "string",
+          "description": "the date the star was created"
         }
       }
     }
