@@ -12,19 +12,19 @@ const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017";
 const MONGO_TEST_DB = process.env.MONGO_TEST_DB || "fiddles_test";
 const db = new Database(MONGO_URI, MONGO_TEST_DB);
 
+before (async function() {
+  return await db.connect();
+});
+
+after (async function() {
+  return await db.disconnect();
+});
+
+afterEach(async function() {
+  return await db.clear();
+});
+
 describe("/fiddles/", function() {
-
-  before (async function() {
-    return await db.connect();
-  });
-
-  after (async function() {
-    return await db.disconnect();
-  });
-
-  afterEach(async function() {
-    return await db.clear();
-  });
 
   describe("POST", function() {
 
@@ -52,7 +52,7 @@ describe("/fiddles/", function() {
       value: "omg fiddle value",
     };
 
-    it("should return 200 status code", async function() {
+    it("valid request -> 200 status", async function() {
 
       const response = await request(app)
         .post("/fiddles/")
@@ -61,7 +61,7 @@ describe("/fiddles/", function() {
       return expect(response.status).to.equal(200);
     });
 
-    it("should return 400 status code", async function() {
+    it("missing _id -> 400 status", async function() {
 
       try {
         const response = await request(app)
@@ -99,7 +99,7 @@ describe("/fiddles/", function() {
       return;
     });
 
-    it("should return 200 status code", async function() {
+    it("valid request -> 200 status", async function() {
 
       const newFiddleData = {...initialFiddleData};
       newFiddleData.name = "success!";
@@ -111,14 +111,16 @@ describe("/fiddles/", function() {
 
         expect(response.status).to.equal(200);
         expect(response.body.newFiddle.name).to.equal("success!");
+
         return assert.ok(true);
       } catch (err) {
+
         return assert.fail();
       }
 
     });
 
-    it("should return 200 status code", async function() {
+    it("invalid _id -> 400 status", async function() {
 
       const newFiddleData = {...initialFiddleData};
       newFiddleData.name = "success!";
@@ -129,11 +131,11 @@ describe("/fiddles/", function() {
           .put("/fiddles/")
           .send(newFiddleData);
 
-        expect(response.status).to.equal(200);
-        expect(response.body.newFiddle.name).to.equal("success!");
-        return assert.ok(true);
-      } catch (err) {
         return assert.fail();
+      } catch (err) {
+        expect(err.status).to.equal(400);
+
+        return assert.ok(true);
       }
 
     });
@@ -141,14 +143,6 @@ describe("/fiddles/", function() {
   });
 
 });
-
-// describe("PUT /fiddles/:fiddleid", () => {
-//     test("It should gets 200 success return code", () => {
-//         return request(app).put("/fiddles/1").then((response) => {
-//             expect(response.status).toBe(200);
-//         });
-//     });
-// });
 
 // describe("POST /fiddles/:fiddleid/star", () => {
 //     test("It should gets 200 success return code", () => {

@@ -12,7 +12,10 @@ export default class Database {
 
   public async connect(logSuccess?: boolean) {
     try {
-      await mongoose.connect(`${this.url}/${this.database}`, { useNewUrlParser: true });
+      await mongoose.connect(`${this.url}/${this.database}`, {
+        useFindAndModify: false,
+        useNewUrlParser: true,
+      });
       if (logSuccess) {
         console.log(`Database connection to ${this.url}/${this.database} successful`);
       }
