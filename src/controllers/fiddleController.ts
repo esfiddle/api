@@ -14,6 +14,11 @@ export class FiddleController {
       res.status(400).json({ error });
     }
 
+    
+    if (await Fiddle.findById(req.body._id)) {
+      res.status(400).json({ error: 'Fiddle _id already exists!'})
+    }
+
     try {
       const newFiddle: mongoose.Document = await fiddleDoc.save()
       res.status(200).json({
@@ -24,10 +29,20 @@ export class FiddleController {
     } catch (err) {
       res.status(500).json({ error: err });
     }
-}
+  }
 
-  public updateFiddle = (req: Request, res: Response) => {
-    res.json({ function: [ { name: "updateFiddle" } ] });
+  public updateFiddle = async (req: Request, res: Response) => {
+      const newFiddle: mongoose.Document | null =
+        await Fiddle.findByIdAndUpdate(req.body._id, req.body, {
+          new: true,
+          runValidators: true,
+        });
+
+      if (!newFiddle) {
+        return res.status(400).json({ error: 'Invalid input.'})
+      }
+
+      return res.status(200).json({ newFiddle })
   }
 
   public starFiddle = (req: Request, res: Response) => {

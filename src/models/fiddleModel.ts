@@ -35,4 +35,8 @@ export const FiddleSchema = new Schema({
         required: true,
         type: String,
       },
+      updated: {
+        type: Date,
+        default: Date.now,
+      }
 });

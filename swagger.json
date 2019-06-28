@@ -138,6 +138,9 @@
         "summary": "Create fiddle",
         "description": "Create a fiddle for the user in the JWT. Returns an object of the created fiddle along with a unique url and url code",
         "operationId": "createFiddle",
+        "consumes": [
+          "application/json"
+        ],
         "produces": [
           "application/json"
         ],
@@ -153,42 +156,71 @@
           }
         ],
         "responses": {
+          "200": {
+            "description": "Fiddle successfully created"
+          },
           "400": {
             "description": "Invalid ID supplied"
-          },
-          "500": {
-            "description": "Server error"
           },
           "default": {
             "description": "Success"
           }
-        }
-      }
-    },
-    "/fiddles/${fiddleId}": {
-      "put": {
-        "parameters": [
+        },
+        "security": [
           {
-            "$ref": "#/parameters/fiddleId"
+            "fiddles_auth": [
+              "write:fiddles",
+              "read:fiddles"
+            ]
           }
-        ],
+        ]
+      },
+      "put": {
         "tags": [
           "fiddles"
         ],
         "summary": "Update a fiddle",
-        "description": "Update the fiddle based on the ID passed to the route. Updates only if you are authenticated.",
+        "description": "Update the fiddle based on the ID included in the body.",
         "operationId": "updateFiddle",
+        "consumes": [
+          "application/json"
+        ],
         "produces": [
           "application/json"
         ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Fiddle object to create",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Fiddle"
+            }
+          }
+        ],
         "responses": {
+          "200": {
+            "description": "Fiddle successfully created"
+          },
+          "400": {
+            "description": "Invalid input"
+          },
           "default": {
             "description": "Success"
           }
-        }
+        },
+        "security": [
+          {
+            "fiddles_auth": [
+              "write:fiddles",
+              "read:fiddles"
+            ]
+          }
+        ]
       }
     },
-    "/fiddles/${fiddleId}/star": {
+    "/fiddles/star": {
       "post": {
         "parameters": [
           {
@@ -336,6 +368,22 @@
       }
     }
   },
+  "securityDefinitions": {
+    "fiddles_auth": {
+      "type": "oauth2",
+      "authorizationUrl": "http://github.esfiddle.io/oauth/dialog",
+      "flow": "implicit",
+      "scopes": {
+        "write:fiddles": "modify fiddles in your account",
+        "read:fiddles": "read your fiddles"
+      }
+    },
+    "api_key": {
+      "type": "apiKey",
+      "name": "api_key",
+      "in": "header"
+    }
+  },
   "definitions": {
     "User": {
       "type": "object",
@@ -410,6 +458,10 @@
         "value": {
           "type": "string",
           "description": "The contents of the fiddle - the code!"
+        },
+        "updated": {
+          "type": "string",
+          "description": "Date this fiddle record was last updated."
         }
       }
     },
