@@ -11,23 +11,22 @@ export class FiddleController {
     const error: mongoose.Error.ValidationError = fiddleDoc.validateSync();
 
     if (error) {
-      res.status(400).json({ error });
+      return res.status(400).json({ error });
     }
 
-    
     if (await Fiddle.findById(req.body._id)) {
-      res.status(400).json({ error: 'Fiddle _id already exists!'})
+      return res.status(400).json({ error: "Fiddle _id already exists!"});
     }
 
     try {
-      const newFiddle: mongoose.Document = await fiddleDoc.save()
-      res.status(200).json({
+      const newFiddle: mongoose.Document = await fiddleDoc.save();
+      return res.status(200).json({
         fiddle: newFiddle,
-        url: 'unique url goes here',
-        urlCode: 'unique urlcode goes here'
+        url: "unique url goes here",
+        urlCode: "unique urlcode goes here",
       });
     } catch (err) {
-      res.status(500).json({ error: err });
+      return res.status(500).json({ error: err });
     }
   }
 
@@ -39,10 +38,10 @@ export class FiddleController {
         });
 
       if (!newFiddle) {
-        return res.status(400).json({ error: 'Invalid input.'})
+        return res.status(400).json({ error: "Invalid input."});
       }
 
-      return res.status(200).json({ newFiddle })
+      return res.status(200).json({ newFiddle });
   }
 
   public starFiddle = (req: Request, res: Response) => {
