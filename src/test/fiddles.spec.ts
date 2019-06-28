@@ -1,5 +1,6 @@
 /* tslint:disable:only-arrow-functions */
 import { assert, expect } from "chai";
+import * as dotenv from "dotenv";
 import "mocha";
 import * as request from "supertest";
 import app from "../app";
@@ -7,7 +8,7 @@ import Database from "../database";
 
 // Jest testing not recommended: https://mongoosejs.com/docs/jest.html
 
-// TODO: dotenv() for tests
+dotenv.config();
 const MONGO_URI = process.env.MONGO_URI || "mongodb://localhost:27017";
 const MONGO_TEST_DB = process.env.MONGO_TEST_DB || "fiddles_test";
 const db = new Database(MONGO_URI, MONGO_TEST_DB);
