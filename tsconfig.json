@@ -6,6 +6,7 @@
 		"declaration": true,
 		"rootDir": "./src",
 		"outDir": "./dist",
-		"strict": true
-  }
+		"strict": true,
+		"types": [] // https://stackoverflow.com/questions/51634361/how-to-force-tsc-to-ignore-node-modules-folder
+	},
 }
