@@ -1,5 +1,11 @@
 # ESFiddle API
 
+******
+**This repo is now stagnant and remains for the old version of ESFiddle. ESFiddle is being redesigned here https://github.com/esfiddle/site. At some point soon we will start creating an API for the new site. At the moment though, we are not accepting PR's on this repo. If you're a previous contributor or just looking to join a new project then feel free to grab an issue from there or reach out on Gitter.**
+******
+
+
+
 [![Greenkeeper badge](https://badges.greenkeeper.io/esfiddle/api.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/esfiddle/api.svg?branch=master)](https://travis-ci.org/esfiddle/api)
 [![Join the chat at https://gitter.im/esfiddle/Lobby](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/esfiddle/Lobby)
