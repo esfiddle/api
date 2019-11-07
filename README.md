@@ -13,7 +13,7 @@
 [![first-timers-only Friendly](https://img.shields.io/badge/first--timers--only-friendly-blue.svg)](http://www.firsttimersonly.com/)
 
 The ESFiddle API used by the ESFiddle site (https://esfiddle.net)
-This project is a heavy work in progress. Please take a look at the issues, as this is a new project, there is lots of low hanging fruit, so dive in! We are looking for contributors and maintainers.
+This project is a heavy work in progress. Please take a look at the issues. As this is a new project, there are lots of low hanging fruit, so dive in! We are looking for contributors and maintainers.
 
 ## Setup
 ```sh
@@ -43,8 +43,8 @@ Create **.env** file in root directory
 using **.env.example** file.
 
 ## Documentation
-You can find our swagger documentation at https://api.esfiddle.net/docs
+You can find our swagger documentation at https://api.esfiddle.net/docs.
 
 
 ## Contributing
-Check our the contribution guide here: https://github.com/esfiddle/site/blob/master/docs/CONTRIBUTE.md
+Check out the contribution guide here: https://github.com/esfiddle/site/blob/master/docs/CONTRIBUTE.md
