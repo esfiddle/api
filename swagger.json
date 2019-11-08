@@ -26,6 +26,25 @@
     }
   },
   "paths": {
+    "/health": {
+      "get": {
+        "tags": [
+          "health"
+        ],
+        "summary": "Get the status of the service",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Service is operating normally"
+          },
+          "500": {
+            "description": "Service is not operating normally"
+          }
+        }
+      }
+    },
     "/users": {
       "post": {
         "tags": [
