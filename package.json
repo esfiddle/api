@@ -18,7 +18,7 @@
     "mongoose": "5.5.13",
     "morgan": "1.9.1",
     "nodemon": "1.19.1",
-    "passport": "^0.4.0",
+    "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "path": "^0.12.7",
     "rxjs": "6.3.3",
