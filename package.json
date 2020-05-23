@@ -42,7 +42,7 @@
     "@types/typescript": "^2.0.0",
     "babel-cli": "^6.26.0",
     "chai": "^4.2.0",
-    "mocha": "^6.1.4",
+    "mocha": "^7.2.0",
     "nyc": "^14.1.1",
     "rimraf": "^2.6.3",
     "supertest": "3.4.0",
